@@ -50,7 +50,8 @@ sudo apt-get -qq install clang-7 clang++-7
 # Bazel dependencies
 sudo apt-get -qq install pkg-config zip zlib1g-dev unzip
 # XLA build requires Bazel
-wget https://github.com/bazelbuild/bazel/releases/download/1.1.0/bazel-1.1.0-installer-linux-x86_64.sh
+BAZEL_VERSION="1.2.1"
+wget https://github.com/bazelbuild/bazel/releases/download/$BAZEL_VERSION/bazel-$BAZEL_VERSION-installer-linux-x86_64.sh
 chmod +x bazel-*.sh
 sudo ./bazel-*.sh
 BAZEL="$(which bazel)"
@@ -58,6 +59,7 @@ if [ -z "${BAZEL}" ]; then
   echo "Unable to find bazel..."
   exit 1
 fi
+bazel version
 
 # Install bazels3cache for cloud cache
 sudo apt-get -qq install npm
